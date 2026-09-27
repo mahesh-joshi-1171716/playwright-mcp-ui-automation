@@ -14,6 +14,7 @@ Before finishing a change, ask:
 - [ ] Does `docs/mcp-playwright.md` need a new MCP workflow, permission boundary, or limitation?
 - [ ] Does `docs/github-actions.md` need a CI command, artifact, runner, or trigger update?
 - [ ] Does `docs/integrations.md` need a GitHub, Jira, or external-service decision?
+- [ ] Does `docs/glossary.md` need a new technical term or command explained in plain language?
 - [ ] Do `.github/` instructions need to reflect a changed coding or agent rule?
 
 ## Required updates by change type

@@ -9,6 +9,18 @@
 
 This repository is a learning project and a growing automation framework. It checks whether a website behaves correctly from a user's point of view.
 
+## Author background and focus
+
+Mahesh Joshi is a Quality Assurance Engineer who uses Playwright with TypeScript in day-to-day work. This project is not about learning software testing from the beginning; it is a deliberate exercise in building a complete Playwright framework from an empty project.
+
+The main learning goals are to:
+
+- design the framework structure from scratch;
+- understand Playwright configuration, fixtures, page objects, tests, reports, and CI as one system;
+- understand what Playwright MCP can discover and where it belongs in a professional workflow;
+- use MCP observations responsibly without treating generated output as production test code;
+- document decisions and evolve the framework step by step.
+
 For example, a test can answer:
 
 > Can a user open the Playwright documentation and reach the Installation page?
@@ -38,13 +50,13 @@ This project is being built deliberately so that:
 
 ```mermaid
 flowchart LR
-	A[User workflow] --> B[MCP exploration]
-	B --> C[Reviewed test scenario]
-	C --> D[Playwright Test]
-	D --> E[Browser]
-	E --> F[Pass or failure evidence]
-	F --> G[HTML report and diagnosis]
-	G --> D
+A[User workflow] --> B[MCP exploration]
+B --> C[Reviewed test scenario]
+C --> D[Playwright Test]
+D --> E[Browser]
+E --> F[Pass or failure evidence]
+F --> G[HTML report and diagnosis]
+G --> D
 ```
 
 ### In plain language
@@ -106,6 +118,7 @@ For a real test environment, copy `.env.example` to `.env` and set `BASE_URL`. T
 | --- | --- |
 | `npm run test:chromium` | Run all current UI tests in Chromium. |
 | `npm run test:headed` | Run tests with a visible browser window. |
+| `SLOW_MO=500 npm run test:headed` | Run headed tests slowly for easier observation. |
 | `npm run test:ui` | Open Playwright UI mode to select and inspect tests. |
 | `npm run test:debug` | Open the Playwright inspector for step-by-step debugging. |
 | `npm run test:list` | List tests without running them. |
@@ -125,6 +138,16 @@ npm run report
 ```
 
 Start with the list, run the tests normally, watch them in headed mode, and then review the report.
+
+On PowerShell, use this form for slow motion:
+
+```powershell
+$env:SLOW_MO = "500"
+npm run test:headed -- --workers=1
+Remove-Item Env:SLOW_MO
+```
+
+The value is milliseconds between browser actions. Slow motion is for local learning and debugging; normal and CI runs keep it disabled.
 
 The normal local quality gate is:
 
@@ -161,6 +184,9 @@ docs/roadmap.md                 Staged professional growth plan
 docs/github-actions.md          Continuous integration workflow
 docs/integrations.md            Optional GitHub and Jira guidance
 docs/documentation-policy.md    Documentation update checklist
+docs/glossary.md                Plain-language project terms and commands
+docs/architecture.md             Runtime and Git delivery diagrams
+docs/learning-journal.md         Day-by-day goals, learnings, and evidence
 CONTRIBUTING.md                 Branch, pull request, and review workflow
 .github/copilot-instructions.md Project-wide agent guidance
 .github/instructions/          File-scoped Playwright guidance
@@ -176,10 +202,15 @@ CONTRIBUTING.md                 Branch, pull request, and review workflow
 - Change browser, URL, retries, or artifacts in `playwright.config.ts`.
 - Change the local test target in `.env`; never commit that file.
 - Describe a business workflow in `docs/workflows/` before automating it.
+- Record meaningful progress in `docs/learning-journal.md` before writing a public update.
 - Keep external integrations optional; local `npm run validate` must remain enough to verify the project.
 - Use a short-lived branch and pull request for meaningful changes; keep `main` stable.
 - Explain a framework rule in `docs/` or this README.
 - Change agent behavior in `.github/` instructions.
+
+Read [docs/architecture.md](docs/architecture.md) for the runtime flow, Git branch lifecycle, and CI delivery diagrams.
+
+Read [docs/glossary.md](docs/glossary.md) when a Playwright, MCP, Git, CI, reporting, or npm term is unfamiliar.
 
 ## How MCP fits into the workflow
 
@@ -196,7 +227,7 @@ MCP must not be used with private data, credentials, or systems without authoriz
 
 Read [docs/mcp-playwright.md](docs/mcp-playwright.md) for the detailed MCP workflow.
 
-## Our quality rules
+## Quality rules
 
 - Test one clear user outcome at a time.
 - Keep tests independent so they can run in any order.

@@ -2,7 +2,6 @@
   "name": "playwright_mcp",
   "version": "1.0.0",
   "description": "Beginner-friendly Playwright UI automation with MCP-assisted exploration",
-  "main": "index.js",
   "scripts": {
     "test": "playwright test",
     "test:chromium": "playwright test --project=chromium",
@@ -15,10 +14,19 @@
     "validate": "npm run typecheck && npm run test:chromium",
     "report": "playwright show-report"
   },
-  "keywords": [],
+  "keywords": [
+    "playwright",
+    "playwright-mcp",
+    "test-automation",
+    "typescript",
+    "ui-automation"
+  ],
   "author": "Mahesh Joshi",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.3",

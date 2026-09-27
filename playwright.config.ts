@@ -7,6 +7,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const baseURL = process.env.BASE_URL?.trim() || 'https://playwright.dev';
 const testEnvironment = process.env.TEST_ENV?.trim() || 'practice';
+const slowMo = Number(process.env.SLOW_MO ?? 0);
 
 /**
  * Read environment variables from file.
@@ -33,6 +34,7 @@ export default defineConfig({
   },
   use: {
     baseURL,
+    launchOptions: slowMo > 0 ? { slowMo } : undefined,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
