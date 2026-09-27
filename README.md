@@ -160,6 +160,8 @@ docs/test-strategy.md           Test design and quality gates
 docs/roadmap.md                 Staged professional growth plan
 docs/github-actions.md          Continuous integration workflow
 docs/integrations.md            Optional GitHub and Jira guidance
+docs/documentation-policy.md    Documentation update checklist
+CONTRIBUTING.md                 Branch, pull request, and review workflow
 .github/copilot-instructions.md Project-wide agent guidance
 .github/instructions/          File-scoped Playwright guidance
 .github/workflows/              GitHub Actions automation
@@ -175,6 +177,7 @@ docs/integrations.md            Optional GitHub and Jira guidance
 - Change the local test target in `.env`; never commit that file.
 - Describe a business workflow in `docs/workflows/` before automating it.
 - Keep external integrations optional; local `npm run validate` must remain enough to verify the project.
+- Use a short-lived branch and pull request for meaningful changes; keep `main` stable.
 - Explain a framework rule in `docs/` or this README.
 - Change agent behavior in `.github/` instructions.
 
@@ -269,6 +272,8 @@ This README is part of the framework, not a one-time setup note. Update it whene
 - a significant framework decision.
 
 When the README and the implementation disagree, update the documentation and code together, then run the relevant tests.
+
+Use [docs/documentation-policy.md](docs/documentation-policy.md) as the checklist for every framework, test, configuration, MCP, CI, environment, or integration change.
 
 ## Roadmap
 
