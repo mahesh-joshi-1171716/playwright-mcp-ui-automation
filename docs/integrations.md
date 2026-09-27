@@ -6,11 +6,12 @@ The repository is designed to be pushed to GitHub. The project should include th
 
 Recommended GitHub setup:
 
-- Create a private repository first if the project contains any private learning material.
+- Use a public repository for this practice project after checking that no private material is included.
 - Push the project after reviewing `git status` and confirming no `.env` or credentials are included.
 - Enable the workflow in `.github/workflows/playwright.yml`.
 - Protect the default branch after the workflow is consistently passing.
 - Require the CI check for pull requests once the project has regular changes.
+- Follow [CONTRIBUTING.md](../CONTRIBUTING.md) for branches, pull requests, reviews, and merge hygiene.
 
 ## Jira
 
